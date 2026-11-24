@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo
+spec:
+  initContainers:
+  - name: download
+    image: busybox:1.37
+    command: ["sh", "-c", "wget -O /tmp/index.html https://raw.githubusercontent.com/raghudevopsb90/roboshop-microservices/main/00-overview.md"]
+  containers:
+  - name: nginx
+    image: nginx:1.29
